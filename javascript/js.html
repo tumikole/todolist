@@ -11,24 +11,27 @@
     <title>To do list</title>
 </head>
 <body>
+  
+  
+  <div id="myDIV" class="header">
+    <h2>To Do List</h2>
+    <input type="text" id="myInput" placeholder="List Items">
+    <input id="date" type="date" id="myDate" value="2014-02-09" required>
+    <p id="demo"></p>
+
+    <p><strong>Note:</strong> input elements with type="date" do not show as any date field/calendar in IE 11 and earlier versions.</p>
+    <span onclick="newElement()" class="addBtn">Add</span>
+
+  </div>
+
+  <h2>To Do List Items</h2>
+  
+  <ul id="myUL">
     
-    <div id="myDIV" class="header">
+  </ul>
+  
 
-        <h2>My To Do List</h2>
-        <input type="text" id="myInput" placeholder="Title..."/>
-        <span onclick="newElement()" class="addBtn">Add</span>
-      </div>
-      
-      <ul id="myUL">
-        <li>Hit the gym</li>
-        <li class="checked">Pay bills</li>
-        <li>Meet George</li>
-        <li>Buy eggs</li>
-        <li>Read a book</li>
-        <li>Organize office</li>
-      </ul>
-      
-
+  <button onclick="myFunction()">Try it</button>
 
 </body>
 </html>
