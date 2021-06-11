@@ -1,58 +1,67 @@
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
+const todoObjectList =[];
 
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
+class Todo_Class {
+  constructor(item){
+    this.ulElement =item;
   }
-}
-
-
-
-// Create a new list item when clicking on the "submit" button
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var inputValue1 = document.getElementById("myDate").value;
-  var t = document.createTextNode(inputValue);
-  var d = document.createTextNode(inputValue1)
-  li.appendChild(t);
-  li.appendChild(d)
-  if (inputValue === '') {
-    alert("List your to do items");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-
-      function myFunction() {
-        var x = document.getElementById("myInput").required;
-        document.getElementById("demo").innerHTML = x;
+  add() {
+    }
+  done_undone() {
+      }
+  delete() {
+      }
+  display() {
       }
     }
-  }
-}
 
+    const listSection = document.querySelector("#myUL");
+
+     myTodoList = Todo_Class(listSection);
+    document.querySelector(".addBtn").addEventListener("click", function() {
+      myTodoList.add()
+    })
+
+     function add() {
+      const todoInput = document.querySelector("#myInput").value;
+      if (todoInput == "") {
+        alert("You did not enter any item")
+      } else {
+        const todoObject = {
+          id : todoObjectList.length,
+          todoText : todoInput,
+          isDone : false,
+        }
+
+        todoObjectList.unshift(todoObject);
+        this.display();
+        document.querySelector("#myInput").value = '';
+      }
+    }
+
+    function display(){
+      this.ulElement.innerHTML = "";
+      todoObjectList.forEach((Object_item) => {
+
+        const liElement = document.createElement("li");
+        const delBtn = document.createElement("i");
+
+        liElement.innerText = object_item.todoText;
+        liElement.setAttribute("data-id", object_item.id);
+        delBtn.setAttribute("data_id", "fa-trash-alt");
+
+        liElement.appendChild(delBtn);
+
+        delBtn.addEventListener("click", function(e){
+          const deleteId = e.target.getAttribute("data-id");
+          myTodoList.deleteElement(deleteId);
+        })
+        liElement.addEventListener("click", function(e) {
+          const selectedId = e.target.getAttribute("data-id")
+          myTodoList.done_undone(selectedId);
+        })
+        if (object_item.isDone) {
+          liElement.classList.add("checked");
+        }
+        this.ulElement.appendChild(liElement)
+      })
+    }
