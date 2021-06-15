@@ -1,0 +1,23 @@
+img{
+    height:10rem;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#myInput{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+}
+
+.btn{
+    margin: auto;
+    width: 15%;
+    padding: 2px;
+}
